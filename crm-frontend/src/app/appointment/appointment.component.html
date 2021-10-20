@@ -1,0 +1,77 @@
+ 
+<h1 style="text-align: center;">Book Appointment</h1>
+
+<br><br><br>
+
+
+  <form (ngSubmit)="!customerForm.invalid && onSave()" #customerForm="ngForm">
+      
+    <fieldset class="form-group">
+        <label for="inputState" class="form-label">Select Speciality</label><br>
+        <select  #name="ngModel" [(ngModel)]="appointment.speciality" class="form-select" name="speciality">
+          <option selected>Choose...</option>
+          <option>General doctor</option>
+          <option>Urgent Care</option>
+          <option>Dentist</option>
+        </select>
+      </fieldset>
+
+
+      <fieldset class="form-group">
+        <label for="inputState" class="form-label">Doctor</label><br>
+        <select #name="ngModel" [(ngModel)]="appointment.doctor" class="form-select"name="doctor" >
+          <option selected>Choose...</option>
+          <option>Dr.Rani Kumar</option>
+          <option>Dr.Hamdoon</option>
+          <option>Dr.Abeer</option>
+          <option>Dr.Sajus</option>
+          <option>Dr.Sana</option>
+          <option>DR.Bader</option>
+          <option>Dr.Ahmed</option>
+        </select>
+      </fieldset>
+
+
+      <fieldset class="form-group">
+        <label for="inputState" class="form-label">Gender</label><br>
+        <select  #name="ngModel" [(ngModel)]="appointment.gender" class="form-select" name="gender">
+          <option selected>Choose...</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </fieldset>
+        <fieldset class="form-group">
+            <label>Patient Name</label>
+            <input type="text" #name="ngModel" [(ngModel)]="appointment.patientName" class="form-control" name="patientName" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Patient ID</label>
+            <input type="text" #name="ngModel" [(ngModel)]="appointment.patientID" class="form-control" name="patientID" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Age</label>
+            <input type="text" #name="ngModel" [(ngModel)]="appointment.Age" class="form-control" name="Age" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Phone number</label>
+            <input type="text" #name="ngModel" [(ngModel)]="appointment.gsm" class="form-control" name="gsm" required="required" minlength="8">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Birth Date</label>
+            <input type="date"
+            [ngModel]="appointment.appointmentDt | date:'yyyy-MM-dd'"
+            (ngModelChange)="appointment.appointmentDt = $event"
+            class="form-control" name="appointmentDt">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Msg</label>
+            <input type="text" #email="ngModel" [(ngModel)]="appointment.msg" class="form-control" name="msg">
+        </fieldset>
+        <button type="submit" class="btn btn-success" >Save</button>
+    </form>
+
+  
+
+
+
+ 

@@ -1,0 +1,64 @@
+
+<br><br>
+<h1 style="text-align: center;">Appointment For Today</h1>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>No. hamdoon</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+    
+    <!-- Name Column -->
+    <ng-container matColumnDef="patientID">
+      <th mat-header-cell *matHeaderCellDef>patientID</th>
+      <td mat-cell *matCellDef="let element">{{element.patientID}}</td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>name</th>
+      <td mat-cell *matCellDef="let element">{{element.patientName}}</td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="speciality">
+      <th mat-header-cell *matHeaderCellDef>speciality</th>
+      <td mat-cell *matCellDef="let element">{{element.speciality}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="doctor">
+      <th mat-header-cell *matHeaderCellDef>doctor</th>
+      <td mat-cell *matCellDef="let element">{{element.doctor}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="appointmentDt">
+      <th mat-header-cell *matHeaderCellDef>appointmentDt</th>
+      <td mat-cell *matCellDef="let element">{{element.appointmentDt}}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+  <!--  
+  <div>
+    <h3>
+      Click Log
+    </h3>
+  </div>
+  
+  <div *ngIf="!clickedRows.size">
+    Clicked rows will be logged here
+
+  <ul>
+    <li *ngFor="let clickedRow of clickedRows">
+      Clicked on {{clickedRow.name}}
+    </li>
+  </ul>
+  --> 
