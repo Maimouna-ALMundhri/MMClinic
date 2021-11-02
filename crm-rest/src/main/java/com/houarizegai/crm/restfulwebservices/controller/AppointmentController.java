@@ -24,27 +24,35 @@ public class AppointmentController {
 
     @GetMapping("/users/{username}/appointments")
     public List<Appointment> getAllAppointments(@PathVariable String username) {
-        return appointmentRepository.findAll();
-        // return appointmentService.findAll();
+        //return appointmentRepository.findAll();
+         return appointmentService.findAll();
     }
 
-    @GetMapping("/users/{username}/appointments/{id}")
-    public Appointment getAppointment(@PathVariable String username, @PathVariable long id) {
-        return appointmentRepository.findById(id).get();
-        // return appointmentService.findById(id);
+    @GetMapping("/users/{username}/appointments/{patientid}")
+    public Appointment getByIdAppointment(@PathVariable String username, @PathVariable long  patientid) {
+    	System.out.println(patientid);
+        return appointmentService.findByPId(patientid);
+        // return .findById(id);
     }
+    @GetMapping("/users/{username}/appointments/bymaryam/{id}")
+    public Appointment getAppointment(@PathVariable String username, @PathVariable long  id) {
+    	System.out.println(id);
+        return appointmentService.findById(id);
+        // return .findById(id);
+    }
+
 
     @PutMapping("/users/{username}/appointments")
     public ResponseEntity<Appointment> updateAppointment(@PathVariable String username, @RequestBody Appointment appointment) {
-        // Appointment updatedAppointment = appointmentService.save(appointment);
-        Appointment updatedAppointment = appointmentRepository.save(appointment);
+        Appointment updatedAppointment = appointmentService.save(appointment);
+       // Appointment updatedAppointment = appointmentRepository.save(appointment);
         return new ResponseEntity<>(updatedAppointment, HttpStatus.OK);
     }
 
     @PostMapping("/users/{username}/appointments")
     public ResponseEntity<Void> createAppointment(@PathVariable String username, @RequestBody Appointment appointment) {
-        // Appointment createdAppointment = appointmentService.save(appointment);
-        Appointment createdAppointment = appointmentRepository.save(appointment);
+         Appointment createdAppointment = appointmentService.save(appointment);
+     //   Appointment createdAppointment = appointmentRepository.save(appointment);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(createdAppointment.getId()).toUri();

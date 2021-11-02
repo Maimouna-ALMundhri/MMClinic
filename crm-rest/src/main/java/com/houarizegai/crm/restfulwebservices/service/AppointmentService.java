@@ -17,8 +17,9 @@ public class AppointmentService {
     static {
         appointments = new LinkedList<>(Arrays.asList(
         	
-                new Appointment(++idCounter,10004L, "Ahmed", "eye", "12",today,"heeelp","12345678","M", "hamdoon","doctornote")
-             
+                new Appointment(++idCounter,10004L, "Ahmed", "eye", "12",today,"heeelp","12345678","M", "hamdoon","doctornote"),
+                new Appointment(++idCounter,10005L, "m", "eye", "12",today,"heeelp","4234234","M", "hamdoon","4234234")
+
         ));
     }
 
@@ -27,7 +28,7 @@ public class AppointmentService {
     }
 
     public Appointment save(Appointment appointment) {
-        if(appointment.getId() < 1) {
+        if(appointment.getId() ==null) {
             appointment.setId(++idCounter);
             appointments.add(appointment);
         } else {
@@ -51,6 +52,13 @@ public class AppointmentService {
     public Appointment findById(long id) {
         for(Appointment appointment : appointments)
             if(appointment.getId() == id)
+                return appointment;
+        return null;
+    }
+
+    public Appointment findByPId(long id) {
+        for(Appointment appointment : appointments)
+            if(appointment.getPatientID()==id)
                 return appointment;
         return null;
     }

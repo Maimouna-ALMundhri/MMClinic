@@ -70,5 +70,14 @@ export class DrDetailsComponent implements OnInit {
       console.log(appid);
     this.getMaryam(appid);
     }
+    onSave() {
     
+      // call create customer service
+      this.service.addAppointment("houarizegai", this.appointment).subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['']);
+        }
+      );
+    }
 }

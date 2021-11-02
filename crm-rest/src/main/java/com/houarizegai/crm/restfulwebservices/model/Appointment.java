@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Appointment {
     @Id
@@ -14,6 +16,7 @@ public class Appointment {
 	private String patientName;
     private String speciality;
     private String age;
+   
     private Date appointmentDt;
     private String msg;
     private String gsm;
