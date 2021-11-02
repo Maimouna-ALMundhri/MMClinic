@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'reg', component: RegComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'dr-log', component: DrLogComponent},
-  { path: 'dr-details', component: DrDetailsComponent},
+  { path: 'dr-details/:patientID', component: DrDetailsComponent},
   { path: 'appointment', component: AppointmentComponent },
   { path: 'admin', component:  AdminComponent},
   { path: 'customers/:id', component: CustomerFormComponent, canActivate: [RouteGuardService] },

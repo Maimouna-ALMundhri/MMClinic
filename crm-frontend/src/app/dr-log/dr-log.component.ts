@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table' 
 import { DataSource } from '@angular/cdk/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Customer, Patient } from '../customers/customers.component';
 import { CustomerDataService } from '../service/data/customer-data.service';
@@ -40,34 +40,39 @@ export class Appointment {
 export class DrLogComponent implements OnInit {
   displayedColumns: string[] = ['id', 'patientID', 'name', 'speciality','doctor','appointmentDt'];
 
-  clickedRows = new Set<PeriodicElement>();
+  clickedRows = new Set<Appointment>()
   customers: Customer[]
   patients: Patient[]
   appointments: Appointment[]
   message: string
-  dataSource: Appointment[];
-
+  dataSource: Appointment[]
+  PID =''
 
   constructor(private service: CustomerDataService,
    private router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,private route: ActivatedRoute) { }
 
 
   ngOnInit() {
   
-    this.retrieveAllAppointment();
-    this.dataSource=this.appointments ;
+    this.retrieveAllAppointment()
+    this.dataSource=this.appointments
+  
   }
 
 
   retrieveAllAppointment() {
     this.service.retrieveAllAppointment("houarizegai").subscribe(
       response => {
-        console.log(response);
+       // console.log(response);
         this.appointments = response;
         this.dataSource =this.appointments;
       }
     );
+  }
+
+  onSub(app: Appointment){
+    this.router.navigate(['dr-details', app.patientID]);
   }
 
 }

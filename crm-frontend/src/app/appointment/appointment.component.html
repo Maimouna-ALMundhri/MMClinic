@@ -50,14 +50,14 @@
         </fieldset>
         <fieldset class="form-group">
             <label>Age</label>
-            <input type="text" #name="ngModel" [(ngModel)]="appointment.Age" class="form-control" name="Age" required="required">
+            <input type="text" #name="ngModel" [(ngModel)]="appointment.age" class="form-control" name="Age" required="required">
         </fieldset>
         <fieldset class="form-group">
             <label>Phone number</label>
             <input type="text" #name="ngModel" [(ngModel)]="appointment.gsm" class="form-control" name="gsm" required="required" minlength="8">
         </fieldset>
         <fieldset class="form-group">
-            <label>Birth Date</label>
+            <label>appointmentDt</label>
             <input type="date"
             [ngModel]="appointment.appointmentDt | date:'yyyy-MM-dd'"
             (ngModelChange)="appointment.appointmentDt = $event"

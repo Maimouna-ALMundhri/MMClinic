@@ -3,7 +3,7 @@
     <div class="alert alert-success" *ngIf='message'>{{message}}</div>
 <div class="card mt-5">
     <div class="card-header">
-            <h1>Customers Manager</h1>
+            <h1>Users Manager</h1>
     </div>
     <div class="card-body">
 
@@ -53,3 +53,55 @@
 </div>
 </div>
 </div>
+
+<br><br>
+
+
+
+    <div class="col-5" style="border: 2px solid black"><br>
+        <fieldset class="form-group">
+        <div class="col-md-12">
+          <label for="inputEmail4" class="form-label"> Email</label>
+          <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.patientName" class="form-control" name="patientName" required="required">
+    
+        </div>
+        </fieldset>
+    
+    
+        <div class="col-12">
+          <fieldset class="form-group">
+            <label> Name</label>
+            <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.age" class="form-control" name="name" required="required">
+        </fieldset>
+        </div>
+    
+    
+        <div class="col-12">
+          <fieldset class="form-group">
+            <label> number</label>
+            <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.gsm" class="form-control" name="gsm" required="required">
+        </fieldset>
+        </div>
+         
+    
+        <div class="col-md-12">
+          <fieldset class="form-group">
+            <label>Birth Date</label>
+            <input type="date"
+            [ngModel]="selectedAppointment.appointmentDt | date:'yyyy-MM-dd'"
+            (ngModelChange)="selectedAppointment.appointmentDt = $event"
+            class="form-control" name="appointmentDt">
+        </fieldset>
+      </div>
+       
+      <div class="col-md-12">
+        <label>Comment</label>
+        <label for="floatingTextarea2"> </label>
+        <textarea class="form-control"  id="floatingTextarea2" style="height: 100px"></textarea>
+        <br> 
+      </div>
+      
+
+
+  </div>
+  <br>  <br> 

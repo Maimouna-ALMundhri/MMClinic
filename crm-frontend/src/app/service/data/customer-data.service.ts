@@ -32,6 +32,9 @@ export class CustomerDataService {
   addAppointment(username: string, appointment: Appointment) {
     return this.http.post(`${API_URL}/users/${username}/appointments`, appointment);
   }
+  addPatient(username: string, patient: Patient) {
+    return this.http.post(`${API_URL}/users/${username}/patients`, patient);
+  }
 
   updateCustomer(username: string, customer: Customer) {
     return this.http.put(`${API_URL}/users/${username}/customers`, customer);
@@ -40,5 +43,19 @@ export class CustomerDataService {
   deleteCustomer(username: string, id: number) {
     return this.http.delete(`${API_URL}/users/${username}/customers/${id}`);
   }
+
+  getPatient(username: string,usr: string,password: string) {
+    return this.http.get(`${API_URL}/users/${username}/patients/${usr}/${password}`);
+  }
+  getAppointment(username: string,id:  number) {
+    return this.http.get<Appointment>(`${API_URL}/users/${username}/appointments/${id}`);
+  }
+
+   
+  getMaryam(username: string,id:  number) {
+    return this.http.get<Appointment>(`${API_URL}/users/${username}/appointments/bymaryam/${id}`);
+  }
+
+
 
 }

@@ -1,4 +1,4 @@
-
+ 
 <br><br>
 <h1 style="text-align: center;">Appointment For Today</h1>
 
@@ -41,11 +41,27 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
         mat-row
-        (click)="clickedRows.add(row)"
-        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        (click)="onSub(row)"
+        
         *matRowDef="let row; columns: displayedColumns;"
     ></tr>
   </table>
+
+  <!-- <div>
+    <h3>
+      Click Log
+    </h3>
+  </div>
+  
+  <div *ngIf="!clickedRows.size">
+    Clicked rows will be logged here
+  </div>
+  
+  <ul>
+    <li *ngFor="let clickedRow of clickedRows">
+      Clicked on {{clickedRow.patientID}}
+    </li>
+  </ul> -->
   <!--  
   <div>
     <h3>
