@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
   { path: 'doctors', component: TestComponent},
   { path: 'reg', component: RegComponent},
+  { path: 'reg/:id', component: RegComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'dr-log', component: DrLogComponent},
   { path: 'dr-details/:patientID', component: DrDetailsComponent},

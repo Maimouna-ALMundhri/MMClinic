@@ -26,21 +26,21 @@
             </tr>
         </thead>
         <tbody>
-            <!-- like: for(Customer customer: customers) { -->
-            <tr *ngFor="let customer of customers">
-                <td>{{customer.id}}</td>
+            <!-- like: for(patient patient: patients) { -->
+            <tr *ngFor="let patient of patients">
+                <td>{{patient.id}}</td>
                 
-                <td>{{customer.name}}</td>
-                <td>{{customer.birthDate | date | uppercase}}</td> <!-- | : pipe (use to convert one field format to another format) -->
-                <td>{{customer.email}}</td>
-                <!-- <td><button (click)="updateCustomer(customer.id)" class="btn btn-success">Update</button></td>
-                <td><button (click)="deleteCustomer(customer.id)" class="btn btn-warning">Delete</button></td> -->
+                <td>{{patient.name}}</td>
+                <td>{{patient.birthDate | date | uppercase}}</td> <!-- | : pipe (use to convert one field format to another format) -->
+                <td>{{patient.email}}</td>
+                <!-- <td><button (click)="updatepatient(patient.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deletepatient(patient.id)" class="btn btn-warning">Delete</button></td> -->
                 <td><div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-success active btn-sm">
-                      <input type="radio" name="options" id="option1" autocomplete="off" checked (click)="updateCustomer(customer.id)"> Update
+                      <input type="radio" name="options" id="option1" autocomplete="off" checked (click)="updatePatient(patient.id)"> Update
                     </label>
                     <label class="btn btn-danger btn-sm">
-                      <input type="radio" name="options" id="option2" autocomplete="off" (click)="deleteCustomer(customer.id)"> Delete
+                      <input type="radio" name="options" id="option2" autocomplete="off" (click)="deletePatient(patient.id)"> Delete
                     </label>
                   </div></td>
             </tr>
@@ -48,7 +48,7 @@
     </table>
 </div>
 <div class="card-footer">
-    <button (click)="addCustomer()" class="btn btn-primary float-right">Add</button><br><br>
+    <button (click)="addPatient()" class="btn btn-primary float-right">Add</button><br><br>
     
 </div>
 </div>
@@ -56,13 +56,24 @@
 
 <br><br>
 
-
-
-    <div class="col-5" style="border: 2px solid black"><br>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+   
+<div *ngFor="let contact of contacts">
+  <div class="col"></div>
+  <!--DOCTOR CARD STARTS HERE-->
+   
+    <div class="col" style="border: 2px solid black"><br>
+      
+      <div class="col-12">
+        <fieldset class="form-group">
+          <label> id</label>
+          <input type="text" #name="ngModel" [(ngModel)]="contact.id" class="form-control" name="id" required="required">
+      </fieldset>
+      </div>
         <fieldset class="form-group">
         <div class="col-md-12">
-          <label for="inputEmail4" class="form-label"> Email</label>
-          <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.patientName" class="form-control" name="patientName" required="required">
+          <label for="inputEmail4" class="form-label"> Name</label>
+          <input type="text" #name="ngModel" [(ngModel)]="contact.name" class="form-control" name="name" required="required">
     
         </div>
         </fieldset>
@@ -70,38 +81,28 @@
     
         <div class="col-12">
           <fieldset class="form-group">
-            <label> Name</label>
-            <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.age" class="form-control" name="name" required="required">
+            <label> Email</label>
+            <input type="text" #name="ngModel" [(ngModel)]="contact.email" class="form-control" name="email" required="required">
         </fieldset>
         </div>
     
     
         <div class="col-12">
           <fieldset class="form-group">
-            <label> number</label>
-            <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.gsm" class="form-control" name="gsm" required="required">
+            <label> gsm</label>
+            <input type="text" #name="ngModel" [(ngModel)]="contact.gsm" class="form-control" name="gsm" required="required">
         </fieldset>
         </div>
          
     
-        <div class="col-md-12">
+        <div class="col-12">
           <fieldset class="form-group">
-            <label>Birth Date</label>
-            <input type="date"
-            [ngModel]="selectedAppointment.appointmentDt | date:'yyyy-MM-dd'"
-            (ngModelChange)="selectedAppointment.appointmentDt = $event"
-            class="form-control" name="appointmentDt">
+            <label> comment</label>
+            <input type="text" #name="ngModel" [(ngModel)]="contact.comment" class="form-control" name="comment" required="required">
         </fieldset>
-      </div>
-       
-      <div class="col-md-12">
-        <label>Comment</label>
-        <label for="floatingTextarea2"> </label>
-        <textarea class="form-control"  id="floatingTextarea2" style="height: 100px"></textarea>
-        <br> 
-      </div>
-      
-
+        </div>
+    </div>
 
   </div>
-  <br>  <br> 
+   </div>
+  
