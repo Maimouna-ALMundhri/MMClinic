@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { Customer } from '../customers/customers.component';
@@ -14,15 +14,17 @@ export class TestComponent implements OnInit {
 
   customers: Customer
   message: string
+  dr: any;
+  sp: any;
 
 
   constructor(private mahmood: CustomerDataService,
-   private router: Router,
+   private router: Router,private route: ActivatedRoute,
     private toastr: ToastrService) { }
 
 
   ngOnInit() {
-
+    
 console.log("HAAAAAAAAAALLLLOO");
 
     this.retrieveCustomer();
@@ -38,8 +40,13 @@ console.log("HAAAAAAAAAALLLLOO");
     );
   }
   
+  onClik(dr: String, sp: String) {
+    
+
+        this.router.navigate(['appointment',dr,sp]);
+      
+   
 
 
-
-
+}
 }

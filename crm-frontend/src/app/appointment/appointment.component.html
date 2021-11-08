@@ -9,10 +9,10 @@
     <fieldset class="form-group">
         <label for="inputState" class="form-label">Select Speciality</label><br>
         <select  #name="ngModel" [(ngModel)]="appointment.speciality" class="form-select" name="speciality">
-          <option selected>Choose...</option>
-          <option>General doctor</option>
-          <option>Urgent Care</option>
-          <option>Dentist</option>
+          <option [value]="0" [selected]="appointment.speciality==0">Choose...</option>
+          <option [value]="1" [selected]="appointment.speciality==1">General doctor</option>
+          <option [value]="2" [selected]="appointment.speciality==2">Urgent Care</option>
+          <option [value]="3" [selected]="appointment.speciality==3">Dentist</option>
         </select>
       </fieldset>
 
@@ -21,13 +21,13 @@
         <label for="inputState" class="form-label">Doctor</label><br>
         <select #name="ngModel" [(ngModel)]="appointment.doctor" class="form-select"name="doctor" >
           <option selected>Choose...</option>
-          <option>Dr.Rani Kumar</option>
-          <option>Dr.Hamdoon</option>
-          <option>Dr.Abeer</option>
-          <option>Dr.Sajus</option>
-          <option>Dr.Sana</option>
-          <option>DR.Bader</option>
-          <option>Dr.Ahmed</option>
+          <option [value]="1" [selected]="appointment.doctor==1">Dr.Rani Kumar</option>
+          <option [value]="2" [selected]="appointment.doctor==2">Dr.Hamdoon</option>
+          <option [value]="3" [selected]="appointment.doctor==3">Dr.Abeer</option>
+          <option [value]="4" [selected]="appointment.doctor==4">Dr.Sajus</option>
+          <option [value]="5" [selected]="appointment.doctor==5">Dr.Sana</option>
+          <option [value]="6" [selected]="appointment.doctor==6">DR.Bader</option>
+          <option [value]="7" [selected]="appointment.doctor==7">Dr.Ahmed</option>
         </select>
       </fieldset>
 

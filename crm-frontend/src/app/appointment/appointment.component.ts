@@ -14,14 +14,25 @@ export class AppointmentComponent implements OnInit {
   appointments: Appointment[];
   id : Number;
   apptLength : number;
+  dr: string;
+  sp: string;
   constructor(private service: CustomerDataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.retrieveAllAppointment();
     //this.apptLength=this.appointments.length;
     console.log("HAMDOOOON"+this.apptLength);
-   
-    this.appointment=new Appointment(++this.apptLength,10004,'','','','','','','','','');
+    
+    this.dr = this.route.snapshot.params['dr']
+    this.sp = this.route.snapshot.params['sp']
+    if(this.dr != null || this.sp !=null){
+      console.log("HALLLO "+this.dr+this.sp);
+      this.appointment=new Appointment(++this.apptLength,10004,'',this.sp,'','','','','',this.dr,'');
+    }
+    else{
+      this.appointment=new Appointment(++this.apptLength,10004,'','','','','','','','','');
+    }
+    
   }
 
   onSave() {
