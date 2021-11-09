@@ -58,6 +58,9 @@ export class CustomerDataService {
     return this.http.get<Appointment>(`${API_URL}/users/${username}/appointments/${id}`);
   }
 
+  deleteContact(username: string, id: number) {
+    return this.http.delete(`${API_URL}/users/${username}/contacts/${id}`);
+  }
    
   getMaryam(username: string,id:  number) {
     return this.http.get<Appointment>(`${API_URL}/users/${username}/appointments/bymaryam/${id}`);

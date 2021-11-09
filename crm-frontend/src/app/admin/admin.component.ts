@@ -68,5 +68,17 @@ export class AdminComponent implements OnInit {
         }
       );
   }
+  deleteContact(id) {
+      // console.log(`Delete customer ${id}`);
+      this.service.deleteContact("houarizegai", id).subscribe(
+        response => {
+          // console.log(response);
+          this.toastr.success('Success','The patient has been deleted!', {
+            timeOut: 3000
+          });         
+          this.retrieveAllContact(); // refresh customers
+        }
+      );
+  }
 
 }
