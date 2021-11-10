@@ -27,6 +27,7 @@ export class ContactComponent implements OnInit {
   constructor(private service: CustomerDataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    sessionStorage.setItem('authenticaterUser', 'tempuser');
     this.retrieveAllContact();
     //this.apptLength=this.appointments.length;
     console.log("HAMDOOOON"+this.apptLength);
@@ -40,6 +41,7 @@ export class ContactComponent implements OnInit {
       this.service.addContact("houarizegai", this.Contact).subscribe(
         response => {
           console.log(response);
+          sessionStorage.removeItem('authenticaterUser')
           this.router.navigate(['']);
         }
       );

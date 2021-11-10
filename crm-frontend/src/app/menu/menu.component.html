@@ -1,18 +1,19 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div><a  routerLink="/" class="nav-link"><h1 style="color: bisque;">MMclinic</h1></a></div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <!-- <div><a  routerLink="/" class="nav-link"><h1 style="color: #cf295b;">MMclinic</h1></a></div> -->
+        <div><a  routerLink="/" class="nav-link"><img src="../../assets/hamdoonlogo.png" class="top-img" alt="..."></a></div>
         <ul class="navbar-nav">
             <li><a  routerLink="/" class="nav-link">Home</a></li>
-            <li><a  routerLink="/patient" class="nav-link">Patient</a></li>
-            <li><a  routerLink="/doctors" class="nav-link">Doctors</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn() || hardcodedAuthenticationService.isdoctor()||hardcodedAuthenticationService.isadmin "  routerLink="/patient" class="nav-link">Patient</a></li>
+            <li><a routerLink="/doctors" class="nav-link">Doctors</a></li>
             <li><a  routerLink="/contact" class="nav-link">Contact Us</a></li>
-            <li><a  routerLink="/appointment" class="nav-link">Appointment</a></li>
-            <li><a  routerLink="/admin" class="nav-link">Admin</a></li>
-            <li><a  routerLink="/dr-log" class="nav-link">Today</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn() || hardcodedAuthenticationService.isdoctor()||hardcodedAuthenticationService.isadmin()" routerLink="/appointment" class="nav-link">Appointment</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isadmin()" routerLink="/admin" class="nav-link">Admin</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isdoctor()||hardcodedAuthenticationService.isadmin()" routerLink="/dr-log" class="nav-link">Today</a></li>
             
         </ul>
         <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+            <li ><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link"><br>Login</a></li>
             <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
         </ul>
     </nav>
