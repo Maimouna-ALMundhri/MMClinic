@@ -1,0 +1,79 @@
+<br><br>
+<h1 style="text-align: center;">Patient Follow Up </h1>
+
+
+<div class="container">
+    <div class="row">
+
+      <div class="col-3" >All Appointmnets<br>
+        
+            <div *ngFor="let appointment of appointments">
+
+        
+                
+                <button type="submit" (click)="onSub(appointment.id)" class="maryam" >{{appointment.appointmentDt |date:'yyyy-MM-dd HH:mm:ss'}}</button>    
+              
+               
+                </div>
+    
+     
+  </div>
+
+  <div class="col-8" style="border: 2px solid black"><br>
+  <form (ngSubmit)="!apttForm.invalid && onSave()" #apttForm="ngForm">
+
+     
+          <fieldset class="form-group">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label"> patientName</label>
+            <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.patientName" class="form-control" name="patientName" required="required" disabled>
+      
+          </div>
+          </fieldset>
+      
+      
+          <div class="col-6">
+            <fieldset class="form-group">
+              <label>age</label>
+              <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.age" class="form-control" name="name" required="required" disabled>
+          </fieldset>
+          </div>
+      
+      
+          <div class="col-6">
+            <fieldset class="form-group">
+              <label>Phone number</label>
+              <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.gsm" class="form-control" name="gsm" required="required" disabled>
+          </fieldset>
+          </div>
+           
+      
+          <div class="col-md-6">
+            <fieldset class="form-group">
+              <label>appointmentDt</label>
+              <input type="date"
+              [ngModel]="selectedAppointment.appointmentDt | date:'yyyy-MM-dd'"
+              (ngModelChange)="selectedAppointment.appointmentDt = $event"
+              class="form-control" name="appointmentDt" disabled>
+          </fieldset>
+        </div>
+
+           
+        <div class="col-6">
+          <fieldset class="form-group">
+            <label>note</label>
+            <input type="text" #name="ngModel" [(ngModel)]="selectedAppointment.doctorNote" class="form-control" name="doctorNote" required="required" >
+        </fieldset>
+        </div>
+         
+      </form>
+      
+    <button (click)="onSave()" class="btn btn-primary float-right">Update</button><br><br>
+    
+    </div>
+          
+          
+          
+    </div>
+
+  </div>

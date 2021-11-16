@@ -1,0 +1,44 @@
+
+
+<h1>Contact Us</h1>
+
+
+<p>Contact us
+
+    Thank you for visiting MMclinic . Would like to know more about our services kindly Contact us. 
+    We will be happy to hear from you.</p>
+     
+
+    <div class="container">
+        <div class="alert alert-warning" *ngIf="contactForm.dirty && contactForm.invalid">Please, Type a valid inputs!</div>
+        <div class="alert alert-warning" *ngIf="contactForm.dirty && name.invalid">Enter atleast 2 characters in name field!</div>
+        <div class="alert alert-warning" *ngIf="contactForm.dirty && email.invalid">Please, Type a valid email!</div>
+    
+        <form (ngSubmit)="!contactForm.invalid && onSave()" #contactForm="ngForm">
+            <fieldset class="form-group">
+                <label>Name</label>
+                <input type="text" #name="ngModel" [(ngModel)]="Contact.name" class="form-control" name="name" required="required" minlength="5">
+            </fieldset>
+           
+
+            <fieldset class="form-group">
+                <label>Contact Number</label>
+                <input type="text" #name="ngModel" [(ngModel)]="Contact.gsm" class="form-control" name="name" Contact Number="required" minlength="5">
+            </fieldset>
+
+
+            <fieldset class="form-group">
+                <label>Email</label>
+                <input type="email" #email="ngModel" [(ngModel)]="Contact.email" class="form-control" name="email" required="required">
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label>comment</label>
+                <input type="email" #email="ngModel" [(ngModel)]="Contact.comment" class="form-control" name="comment" required="required">
+            </fieldset>
+
+              <br>
+
+            <button type="submit" class="btn btn-success" >Save</button>
+        </form>
+    </div>

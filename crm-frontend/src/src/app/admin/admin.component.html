@@ -1,0 +1,108 @@
+
+<div class="container">
+    <div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<div class="card mt-5">
+    <div class="card-header">
+            <h1>Users Manager</h1>
+    </div>
+    <div class="card-body">
+
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            <i class="glyphicon glyphicon-user "></i>
+          </div>
+              
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Email</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- like: for(patient patient: patients) { -->
+            <tr *ngFor="let patient of patients">
+                <td>{{patient.id}}</td>
+                
+                <td>{{patient.name}}</td>
+                <td>{{patient.birthDate | date | uppercase}}</td> <!-- | : pipe (use to convert one field format to another format) -->
+                <td>{{patient.email}}</td>
+                <!-- <td><button (click)="updatepatient(patient.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deletepatient(patient.id)" class="btn btn-warning">Delete</button></td> -->
+                <td><div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-success active btn-sm">
+                      <input type="radio" name="options" id="option1" autocomplete="off" checked (click)="updatePatient(patient.id)"> Update
+                    </label>
+                    <label class="btn btn-danger btn-sm">
+                      <input type="radio" name="options" id="option2" autocomplete="off" (click)="deletePatient(patient.id)"> Delete
+                    </label>
+                  </div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="card-footer">
+    <button (click)="addPatient()" class="btn btn-primary float-right">Add</button><br><br>
+    
+</div>
+</div>
+</div>
+
+<br><br>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+   
+<div *ngFor="let contact of contacts">
+  <div class="col"></div>
+  <!--DOCTOR CARD STARTS HERE-->
+   
+    <div class="col" style="border: 2px solid black"><br>
+      <img (click)="deleteContact(contact.id)" src="../../assets/c.png" class="hamdoon" alt="...">
+      <div class="col-12">
+        <fieldset class="form-group">
+          <label> id</label>
+          <input type="text" #name="ngModel" [(ngModel)]="contact.id" class="form-control" name="id" required="required">
+      </fieldset>
+      </div>
+        <fieldset class="form-group">
+        <div class="col-md-12">
+          <label for="inputEmail4" class="form-label"> Name</label>
+          <input type="text" #name="ngModel" [(ngModel)]="contact.name" class="form-control" name="name" required="required">
+    
+        </div>
+        </fieldset>
+    
+    
+        <div class="col-12">
+          <fieldset class="form-group">
+            <label> Email</label>
+            <input type="text" #name="ngModel" [(ngModel)]="contact.email" class="form-control" name="email" required="required">
+        </fieldset>
+        </div>
+    
+    
+        <div class="col-12">
+          <fieldset class="form-group">
+            <label> gsm</label>
+            <input type="text" #name="ngModel" [(ngModel)]="contact.gsm" class="form-control" name="gsm" required="required">
+        </fieldset>
+        </div>
+         
+    
+        <div class="col-12">
+          <fieldset class="form-group">
+            <label> comment</label>
+            <input type="text" #name="ngModel" [(ngModel)]="contact.comment" class="form-control" name="comment" required="required">
+        </fieldset>
+        </div>
+    </div>
+
+  </div>
+   </div>
+  
