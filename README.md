@@ -33,5 +33,3 @@ Follow up page
 ![image](https://user-images.githubusercontent.com/91244600/142178732-d85b3ff0-ca1a-4d1b-b143-d59d1add7d20.png)
 
 
-### Contributing 💡
-
