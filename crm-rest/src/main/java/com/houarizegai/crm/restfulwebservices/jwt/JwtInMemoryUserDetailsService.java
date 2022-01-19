@@ -19,6 +19,10 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     inMemoryUserList.add(new JwtUserDetails(1L, "houarizegai", encoder.encode("0000"), "ROLE_USER_2"));
     inMemoryUserList.add(new JwtUserDetails(2L, "in28minutes", encoder.encode("dummy"), "ROLE_USER_2"));
+    inMemoryUserList.add(new JwtUserDetails(3L, "admin", encoder.encode("0000"), "ROLE_USER_2"));
+    inMemoryUserList.add(new JwtUserDetails(4L, "doctor", encoder.encode("0000"), "ROLE_USER_2"));
+    inMemoryUserList.add(new JwtUserDetails(5L, "patient", encoder.encode("0000"), "ROLE_USER_2"));
+
   }
 
   @Override

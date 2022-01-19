@@ -22,8 +22,10 @@ export class BasicAuthenticationService {
       }).pipe(
         map(
           data => { // if request success with response save user in session
+            
             sessionStorage.setItem(AUTHENTICATED_USER, username);
             sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+            
             return data;
           }
         )
@@ -63,9 +65,24 @@ export class BasicAuthenticationService {
     return !(user === null)
   }
 
+  isadmin() {
+    let ad = sessionStorage.getItem('role')
+    return (ad ==='admin')
+  }
+
+  isdoctor() {
+    let ad = sessionStorage.getItem('role')
+    return (ad ==='doctor')
+  }
+
+  ispatient() {
+    let ad = sessionStorage.getItem('role')
+    return (ad ==='patient')
+  }
   logout() {
     sessionStorage.removeItem(AUTHENTICATED_USER)
     sessionStorage.removeItem(TOKEN)
+    sessionStorage.removeItem('role')
   }
 }
 

@@ -33,17 +33,16 @@ export class LoginComponent implements OnInit {
       });
     }    
 
-  ngOnInit() {
+  ngOnInit(
+    
+  ) {
+    this.basicAuthenticationService.executeJWTAuthenticationService("admin", "0000").subscribe(
+      data => {console.log(data)});
   }
 
   handleLogin(form: NgForm) {
-    if(this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
-      this.invalidLogin = false;
-      this.router.navigate(['welcome', this.username]) 
-    } else {
-      this.invalidLogin = true;
-      this.toastr.error('Error', this.errorMessage, {timeOut: 3000});
-    }
+    (this.hardcodedAuthenticationService.authenticate(this.username, this.password));
+  
   }
   
   handleBasicAuthLogin(form: NgForm) {

@@ -24,27 +24,27 @@ public class PatientController {
 
     @GetMapping("/users/{username}/patients")
     public List<Patient> getAllPatients(@PathVariable String username) {
-        return patientRepository.findAll();
-        // return patientService.findAll();
+//        return patientRepository.findAll();
+         return patientService.findAll();
     }
 
     @GetMapping("/users/{username}/patients/{id}")
     public Patient getPatient(@PathVariable String username, @PathVariable long id) {
-        return patientRepository.findById(id).get();
-        // return patientService.findById(id);
+//        return patientRepository.findById(id).get();
+         return patientService.findById(id);
     }
 
     @PutMapping("/users/{username}/patients")
     public ResponseEntity<Patient> updatePatient(@PathVariable String username, @RequestBody Patient patient) {
-        // Patient updatedPatient = patientService.save(patient);
-        Patient updatedPatient = patientRepository.save(patient);
+         Patient updatedPatient = patientService.save(patient);
+//        Patient updatedPatient = patientRepository.save(patient);
         return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
     }
 
     @PostMapping("/users/{username}/patients")
     public ResponseEntity<Void> createPatient(@PathVariable String username, @RequestBody Patient patient) {
-        // Patient createdPatient = patientService.save(patient);
-        Patient createdPatient = patientRepository.save(patient);
+         Patient createdPatient = patientService.save(patient);
+//        Patient createdPatient = patientRepository.save(patient);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(createdPatient.getId()).toUri();
@@ -57,7 +57,7 @@ public class PatientController {
         // Patient patient = patientService.deleteById(id);
 
         // get patient wanna delete it
-        patientRepository.deleteById(id);
+    	patientService.deleteById(id);
 
         return ResponseEntity.noContent().build();
         //return ResponseEntity.notFound().build();

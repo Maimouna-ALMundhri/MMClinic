@@ -9,6 +9,8 @@ import { CustomerDataService } from '../service/data/customer-data.service';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.css']
 })
+
+
 export class PatientComponent implements OnInit {
 
   customers: Customer[]

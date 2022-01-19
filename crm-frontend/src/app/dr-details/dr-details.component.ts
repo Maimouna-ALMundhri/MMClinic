@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { stringify } from 'querystring';
 import { Appointment } from '../dr-log/dr-log.component';
 import { CustomerDataService } from '../service/data/customer-data.service';
@@ -17,7 +18,7 @@ export class DrDetailsComponent implements OnInit {
   id : Number;
   apptLength : number;
   PID :number;
-  constructor(private service: CustomerDataService, private route: ActivatedRoute, private router: Router) { }
+  constructor(  private toastr: ToastrService, private service: CustomerDataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.retrieveAllAppointment();
@@ -70,14 +71,20 @@ export class DrDetailsComponent implements OnInit {
       console.log(appid);
     this.getMaryam(appid);
     }
-    // onSave() {
+
+    updateAppointment(apt: Appointment) {
+      this.service.updateAppointment("houarizegai",apt).subscribe(
+        response => {
+          console.log(response);
+          this.toastr.success('success', 'appointment has been updated', {timeOut: 3000});
+            
+        }
+      );
+    }
+    onSave() {
     
-    //   // call create customer service
-    //   this.service.addAppointment("houarizegai", this.appointment).subscribe(
-    //     response => {
-    //       console.log(response);
-    //       this.router.navigate(['']);
-    //     }
-    //   );
-    // }
+    if(this.selectedAppointment != null){
+      this.updateAppointment(this.selectedAppointment);
+    }
+    }
 }

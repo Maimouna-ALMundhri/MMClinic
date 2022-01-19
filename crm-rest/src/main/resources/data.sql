@@ -13,3 +13,7 @@ INSERT INTO appointment(id,patientid,patient_name,speciality,age,appointment_dt,
 INSERT INTO appointment(id,patientid,patient_name,speciality,age,appointment_dt,msg,gsm,gender,doctor,doctor_note) VALUES (3,10005,'limona','7mo6a','11', sysdate(),'help I need help','9999999','M','hamdoon','limona need to not leave early');
 
 
+INSERT INTO contact(id,name,email,gsm,comment) VALUES (1,'ma','asdasd','12314','hi');
+
+
+INSERT INTO users(id,username,password,role) VALUES (1,'admin','0000','patient');

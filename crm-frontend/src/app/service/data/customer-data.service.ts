@@ -5,6 +5,7 @@ import { API_URL } from 'src/app/app.constants';
 import { BasicAuthenticationService } from '../basic-authentication.service';
 import { Appointment } from 'src/app/dr-log/dr-log.component';
 import { contact } from 'src/app/contact/contact.component';
+import { UserDto } from 'src/app/reg/reg.component';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,9 @@ export class CustomerDataService {
   addPatient(username: string, patient: Patient) {
     return this.http.post(`${API_URL}/users/${username}/patients`, patient);
   }
+  addUser(username: string, user: UserDto) {
+    return this.http.post(`${API_URL}/users/${username}/login`, user);
+  }
   addContact(username: string, Contact: contact) {
     return this.http.post(`${API_URL}/users/${username}/contacts`, Contact);
   }
@@ -56,6 +60,9 @@ export class CustomerDataService {
   }
   getAppointment(username: string,id:  number) {
     return this.http.get<Appointment>(`${API_URL}/users/${username}/appointments/${id}`);
+  }
+  updateAppointment(username: string,appt:  Appointment) {
+    return this.http.put(`${API_URL}/users/${username}/appointments`, appt);
   }
 
   deleteContact(username: string, id: number) {
@@ -76,5 +83,8 @@ export class CustomerDataService {
   retrieveAllContact(username: string) {
     return this.http.get<contact[]>(`${API_URL}/users/${username}/contacts`);
   }
- 
+  doLogin(username: string,usrname:  string, password: string) {
+    return this.http.get<any>(`${API_URL}/users/${username}/login/${usrname}/${password}`);
+  }
+
 }
